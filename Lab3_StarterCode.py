@@ -96,6 +96,10 @@ def fit_zipf(c, kmin, kmax):
     fit_zipf(np.array([5000, 900, 400, 1]), 2, 3)
         returns (-2.0, 3600.0)
     """
+    k = np.arange(kmin, kmax + 1)
+    c_k = c[kmin - 1 : kmax]
+    m, b = np.polyfit(np.log10(k), np.log10(c_k), 1)
+    return m, 10**b
     return 0, 0
 
 # The n most common words, as a set
